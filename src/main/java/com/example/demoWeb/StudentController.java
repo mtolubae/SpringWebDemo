@@ -11,6 +11,9 @@ public class StudentController {
     @Autowired
     private StudentService ss;
 
+    @Autowired
+    private StudentServiceDB ssdb;
+
     @GetMapping("/")
     public String welcome(){
         return "Welcome Student";
@@ -18,7 +21,8 @@ public class StudentController {
 
     @PostMapping("/add")
     public String addStudent(@RequestBody Student s){
-       return ss.addStudent(s);
+       //return ss.addStudent(s);
+        return ssdb.addStudent(s);
     }
 
     @GetMapping("/students")
