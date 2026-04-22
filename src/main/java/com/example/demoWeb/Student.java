@@ -1,8 +1,7 @@
 package com.example.demoWeb;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +16,11 @@ public class Student {
 
     private String name;
     private double gpa;
+
+    @OneToOne
+    @JoinColumn(name="addr_id")
+    @Autowired
+    private Address addr;
 
     public Student() {}
 
@@ -40,4 +44,14 @@ public class Student {
     public void setGpa(double gpa) {
         this.gpa = gpa;
     }
+
+    public Address getAddr() {
+        return addr;
+    }
+
+    public void setAddr(Address addr) {
+        this.addr = addr;
+    }
+
+    public Long getId(){return id;}
 }
